@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Server Error - LifePilot AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef6ff, #f8fbff);
+            min-height: 100vh;
+            color: #1f2937;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 40px 35px;
+            border-radius: 20px;
+            border: 1px solid #e1e8f0;
+            box-shadow: 0 12px 35px rgba(0, 60, 120, 0.10);
+            text-align: center;
+        }
+
+        .icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #fff7e6;
+            border: 1px solid #ffe1a8;
+            border-radius: 20px;
+
+            font-size: 32px;
+        }
+
+        .error-code {
+            margin: 0;
+            color: #073b70;
+            font-size: 72px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        h2 {
+            margin: 18px 0 10px;
+            color: #334155;
+            font-size: 24px;
+        }
+
+        .message {
+            margin: 0 auto;
+            max-width: 470px;
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 25px;
+
+            background: linear-gradient(
+                135deg,
+                #1597e5,
+                #087fc4
+            );
+
+            color: white;
+            text-decoration: none;
+
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 18px rgba(21, 151, 229, 0.22);
+        }
+
+        .footer {
+            margin-top: 22px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 30px 20px;
+                border-radius: 17px;
+            }
+
+            .error-code {
+                font-size: 60px;
+            }
+
+            h2 {
+                font-size: 21px;
+            }
+
+            .message {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="card">
+
+        <div class="icon">
+            ⚠️
+        </div>
+
+        <h1 class="error-code">
+            500
+        </h1>
+
+        <h2>
+            Something Went Wrong
+        </h2>
+
+        <p class="message">
+            Sorry, LifePilot AI encountered an unexpected error.
+            Please return to the home page and try again.
+        </p>
+
+        <a class="button" href="/">
+            🏠 Back to Home
+        </a>
+
+        <div class="footer">
+            LifePilot AI • AI Life & Career Assistant
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

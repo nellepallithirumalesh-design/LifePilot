@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Profile - LifePilot AI</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 520px;
+            margin: 50px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #e3e8ef;
+            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        /* HEADER */
+
+        .profile-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #073b70, #1597e5);
+            color: white;
+            border-radius: 50%;
+            font-size: 29px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            color: #073b70;
+            font-size: 27px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            margin: 9px 0 25px;
+            line-height: 1.5;
+        }
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #334155;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 17px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 14px 14px 42px;
+            border: 1px solid #d4dbe4;
+            border-radius: 10px;
+            background: #fafbfc;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        input:focus {
+            background: white;
+            border-color: #1597e5;
+            box-shadow: 0 0 0 3px rgba(21, 151, 229, 0.10);
+        }
+
+        /* BUTTON */
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1597e5, #087fc4);
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(21, 151, 229, 0.22);
+        }
+
+        /* BACK */
+
+        .back {
+            display: flex;
+            justify-content: center;
+            margin-top: 18px;
+            color: #073b70;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            color: #1597e5;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: 94%;
+                margin: 25px auto;
+            }
+
+            .card {
+                padding: 23px 19px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="profile-icon">
+            👤
+        </div>
+
+        <h1>
+            Edit Profile
+        </h1>
+
+        <p class="subtitle">
+            Update your LifePilot AI account information.
+        </p>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <div class="form-group">
+
+                <label>
+                    Email Address
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+                        📧
+                    </span>
+
+                    <input
+                        type="email"
+                        name="email"
+                        value="{{ request.user.email }}"
+                        placeholder="Enter your email"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button type="submit">
+                💾 Save Changes
+            </button>
+
+        </form>
+
+
+        <a
+            class="back"
+            href="/profile/"
+        >
+            ← Back to Profile
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

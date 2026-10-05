@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LifePilot AI</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            color: #333;
+        }
+
+        nav {
+            background: #1f4e79;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            color: #1f4e79;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 26px;
+            color: #333;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 28px;
+            background: #1f4e79;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+        }
+
+        .features {
+            width: 90%;
+            max-width: 1000px;
+            margin: 45px auto;
+            text-align: center;
+        }
+
+        .features h2 {
+            color: #1f4e79;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #1f4e79;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 50px;
+            background: #1f4e79;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 800px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav a {
+                margin: 6px;
+            }
+
+            .hero {
+                padding: 60px 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero h2 {
+                font-size: 22px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/">🏠 Home</a>
+        <a href="/dashboard/">📊 Dashboard</a>
+        <a href="/chat/">🤖 AI Chat</a>
+        <a href="/goals/">🎯 Goals</a>
+        <a href="/study/">📚 Study Planner</a>
+        <a href="/tasks/">📅 Tasks</a>
+        <a href="/career/">💼 Career</a>
+        <a href="/login/">🔐 Login</a>
+        <a href="/register/">👤 Register</a>
+    </nav>
+
+
+    <section class="hero">
+
+        <h1>🚀 LifePilot AI</h1>
+
+        <h2>Your AI Life & Career Assistant</h2>
+
+        <p>
+            Plan your life. Build your career. Achieve your goals.
+        </p>
+
+        <a class="button" href="/chat/">
+            Get Started 🚀
+        </a>
+
+    </section>
+
+
+    <section class="features">
+
+        <h2>✨ Everything You Need in One Place</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🎯 Goals</h3>
+                <p>
+                    Set goals and track your progress toward achieving them.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📚 Study Planner</h3>
+                <p>
+                    Create study plans and organize your learning effectively.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📅 Daily Tasks</h3>
+                <p>
+                    Manage tasks, set priorities and stay organized every day.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>💼 Career Assistant</h3>
+                <p>
+                    Explore careers, skills, projects and job preparation.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🤖 AI Chat</h3>
+                <p>
+                    Ask questions about studies, careers, Python, AI/ML and more.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Dashboard</h3>
+                <p>
+                    View your goals, study plans, tasks and progress together.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="footer">
+
+        <p>
+            🤖 LifePilot AI — Your Personal Life & Career Assistant
+        </p>
+
+    </div>
+
+</body>
+</html>

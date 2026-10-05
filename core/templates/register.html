@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register - LifePilot AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef6ff, #f8fbff);
+            min-height: 100vh;
+            color: #1f2937;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 15px;
+        }
+
+        .register-card {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            padding: 34px;
+            border-radius: 20px;
+            border: 1px solid #e1e8f0;
+            box-shadow: 0 12px 35px rgba(0, 60, 120, 0.10);
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(
+                135deg,
+                #073b70,
+                #1597e5
+            );
+
+            color: white;
+            border-radius: 20px;
+            font-size: 32px;
+
+            box-shadow: 0 8px 20px rgba(21, 151, 229, 0.22);
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            color: #073b70;
+            font-size: 27px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            margin: 9px 0 28px;
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #334155;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 17px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 14px 14px 43px;
+
+            border: 1px solid #d4dbe4;
+            border-radius: 10px;
+
+            background: #fafbfc;
+            color: #1f2937;
+
+            font-size: 15px;
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        input:focus {
+            background: white;
+            border-color: #1597e5;
+            box-shadow: 0 0 0 3px rgba(21, 151, 229, 0.10);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 6px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: linear-gradient(
+                135deg,
+                #1597e5,
+                #087fc4
+            );
+
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 18px rgba(21, 151, 229, 0.22);
+        }
+
+        .error {
+            background: #fff1f1;
+            color: #c62828;
+
+            padding: 11px;
+            margin-top: 18px;
+
+            border-radius: 9px;
+            border: 1px solid #ffd2d2;
+
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .login {
+            text-align: center;
+            margin-top: 23px;
+
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .login p {
+            margin: 0;
+        }
+
+        .login a {
+            color: #087fc4;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .login a:hover {
+            color: #073b70;
+        }
+
+        .home {
+            display: flex;
+            justify-content: center;
+
+            margin-top: 18px;
+
+            color: #073b70;
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .home:hover {
+            color: #1597e5;
+        }
+
+        .security {
+            text-align: center;
+            margin-top: 20px;
+
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding: 18px 12px;
+            }
+
+            .register-card {
+                padding: 25px 20px;
+                border-radius: 17px;
+            }
+
+            .logo {
+                width: 62px;
+                height: 62px;
+                font-size: 28px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="register-card">
+
+        <div class="logo">
+            🚀
+        </div>
+
+        <h1>Create Your Account</h1>
+
+        <p class="subtitle">
+            Start your journey with LifePilot AI
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="input-group">
+
+                <label>Username</label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">👤</span>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Choose a username"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Password</label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">🔒</span>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Choose a password"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Confirm Password</label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">🔐</span>
+
+                    <input
+                        type="password"
+                        name="confirm_password"
+                        placeholder="Enter password again"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button type="submit">
+                Create Account 🚀
+            </button>
+
+        </form>
+
+
+        {% if error %}
+
+            <div class="error">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+
+        <div class="login">
+
+            <p>
+                Already have an account?
+                <a href="/login/">
+                    Login
+                </a>
+            </p>
+
+        </div>
+
+
+        <a class="home" href="/">
+            ← Back to Home
+        </a>
+
+
+        <div class="security">
+            🔐 Your account information is protected
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

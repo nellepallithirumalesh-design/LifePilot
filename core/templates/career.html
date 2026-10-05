@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LifePilot AI - Career Assistant</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: linear-gradient(135deg, #073b70, #1597e5);
+            padding: 14px 18px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 11px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 92%;
+            max-width: 820px;
+            margin: 32px auto;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: linear-gradient(135deg, #073b70, #1597e5);
+            color: white;
+            padding: 34px 25px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(7, 59, 112, 0.15);
+            margin-bottom: 20px;
+        }
+
+        .hero-icon {
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .hero p {
+            margin: 10px 0 0;
+            color: #e5f3ff;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* CARD */
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #e5eaf0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            margin: 0 0 7px;
+            color: #073b70;
+            font-size: 20px;
+        }
+
+        .card-subtitle {
+            margin: 0 0 20px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d4dbe4;
+            border-radius: 10px;
+            background: #fafbfc;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        input:focus {
+            background: white;
+            border-color: #1597e5;
+            box-shadow: 0 0 0 3px rgba(21, 151, 229, 0.10);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1597e5, #087fc4);
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(21, 151, 229, 0.22);
+        }
+
+        /* RESULT */
+
+        .result {
+            background: #f7fbff;
+            border: 1px solid #dcecf9;
+            padding: 22px;
+            margin-top: 22px;
+            border-radius: 14px;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .result-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e5f4ff;
+            border-radius: 10px;
+            font-size: 21px;
+        }
+
+        .result h3 {
+            margin: 0;
+            color: #073b70;
+            font-size: 19px;
+        }
+
+        .interest {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 12px 14px;
+            border-radius: 9px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .interest strong {
+            color: #073b70;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dfe7ef;
+            margin: 15px 0;
+        }
+
+        .career-step {
+            background: white;
+            padding: 18px;
+            border-radius: 11px;
+            border-left: 4px solid #1597e5;
+            color: #374151;
+            line-height: 1.7;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        /* TIP */
+
+        .tip {
+            margin-top: 14px;
+            padding: 12px 14px;
+            background: #fff8e7;
+            border: 1px solid #f7df9b;
+            border-radius: 9px;
+            color: #765b18;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            nav {
+                padding: 10px;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 7px 8px;
+            }
+
+            .container {
+                width: 94%;
+                margin: 20px auto;
+            }
+
+            .hero {
+                padding: 28px 18px;
+                border-radius: 15px;
+            }
+
+            .hero-icon {
+                font-size: 34px;
+            }
+
+            .hero h1 {
+                font-size: 25px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .card {
+                padding: 19px;
+                border-radius: 14px;
+            }
+
+            .card-title {
+                font-size: 18px;
+            }
+
+            .result {
+                padding: 17px;
+            }
+
+            .career-step {
+                padding: 15px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="/">🏠 Home</a>
+
+        <a href="/dashboard/">📊 Dashboard</a>
+
+        <a href="/chat/">🤖 AI Chat</a>
+
+        <a href="/goals/">🎯 Goals</a>
+
+        <a href="/study/">📚 Study Planner</a>
+
+        <a href="/tasks/">📅 Tasks</a>
+
+        <a href="/career/">💼 Career</a>
+
+    </nav>
+
+
+    <div class="container">
+
+        <!-- HERO -->
+
+        <div class="hero">
+
+            <div class="hero-icon">
+                💼
+            </div>
+
+            <h1>
+                Career Assistant
+            </h1>
+
+            <p>
+                Discover your career path and get personalized guidance from LifePilot AI.
+            </p>
+
+        </div>
+
+
+        <!-- CAREER FORM -->
+
+        <div class="card">
+
+            <h2 class="card-title">
+                🎯 Explore Your Career
+            </h2>
+
+            <p class="card-subtitle">
+                Enter a career you're interested in and let LifePilot AI guide you.
+            </p>
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="form-group">
+
+                    <label>
+                        Career Interest
+                    </label>
+
+                    <input
+                        type="text"
+                        name="career"
+                        placeholder="Example: AI/ML Engineer"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit">
+                    🤖 Get Career Guidance
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- AI RESULT -->
+
+        {% if result %}
+
+        <div class="card">
+
+            <div class="result">
+
+                <div class="result-header">
+
+                    <div class="result-icon">
+                        🤖
+                    </div>
+
+                    <h3>
+                        AI Career Guidance
+                    </h3>
+
+                </div>
+
+
+                <div class="interest">
+
+                    <strong>
+                        Your Interest:
+                    </strong>
+
+                    {{ career }}
+
+                </div>
+
+
+                <hr>
+
+
+                <div class="career-step">
+
+                    {{ result|linebreaksbr }}
+
+                </div>
+
+
+                <div class="tip">
+                    💡 Use this guidance as a starting point and keep building your skills through projects and practice.
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>

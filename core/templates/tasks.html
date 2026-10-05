@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LifePilot AI - Tasks</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: linear-gradient(135deg, #073b70, #1597e5);
+            color: white;
+            padding: 38px 20px;
+            text-align: center;
+        }
+
+        .header-icon {
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .header p {
+            margin: 9px 0 0;
+            color: #e5f3ff;
+            font-size: 15px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 92%;
+            max-width: 820px;
+            margin: 30px auto;
+        }
+
+        /* CARD */
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #e6eaf0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            margin: 0;
+            color: #073b70;
+            font-size: 21px;
+        }
+
+        .task-count {
+            background: #eaf5ff;
+            color: #087fc4;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* FORM */
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 180px auto;
+            gap: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d4dbe4;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            background: #fafbfc;
+            transition: 0.2s;
+        }
+
+        input:focus,
+        select:focus {
+            background: white;
+            border-color: #1597e5;
+            box-shadow: 0 0 0 3px rgba(21, 151, 229, 0.10);
+        }
+
+        button {
+            border: none;
+            padding: 14px 20px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1597e5, #087fc4);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 14px rgba(21, 151, 229, 0.22);
+        }
+
+        /* TASK */
+
+        .task {
+            position: relative;
+            background: #f8fbff;
+            border: 1px solid #e1edf9;
+            border-left: 5px solid #94a3b8;
+            padding: 17px;
+            margin-top: 12px;
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+
+        .task:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .task.high {
+            border-left-color: #dc3545;
+        }
+
+        .task.medium {
+            border-left-color: #f59e0b;
+        }
+
+        .task.low {
+            border-left-color: #22a06b;
+        }
+
+        .task.completed {
+            opacity: 0.65;
+            background: #f8fafb;
+        }
+
+        .task-main {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .task-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e7f4ff;
+            border-radius: 10px;
+            font-size: 19px;
+        }
+
+        .task-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .task-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1f4e79;
+            overflow-wrap: anywhere;
+        }
+
+        .priority {
+            display: inline-block;
+            margin-top: 7px;
+            font-size: 12px;
+            color: #64748b;
+            background: #eef4f9;
+            padding: 5px 8px;
+            border-radius: 7px;
+        }
+
+        /* STATUS */
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid #e5ebf2;
+        }
+
+        .status-label {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .complete-link,
+        .incomplete-link {
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 7px 10px;
+            border-radius: 8px;
+        }
+
+        .complete-link {
+            color: #16803c;
+            background: #ecfdf3;
+        }
+
+        .complete-link:hover {
+            background: #d8f8e5;
+        }
+
+        .incomplete-link {
+            color: #64748b;
+            background: #f1f5f9;
+        }
+
+        .incomplete-link:hover {
+            background: #e2e8f0;
+        }
+
+        /* DELETE */
+
+        .delete {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            text-decoration: none;
+            color: #dc3545;
+            background: #fff1f2;
+            padding: 7px 9px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .delete:hover {
+            background: #ffe1e4;
+        }
+
+        /* EMPTY */
+
+        .empty {
+            margin: 0;
+            color: #64748b;
+            background: #f8fafc;
+            border: 1px dashed #cfd8e3;
+            padding: 18px;
+            border-radius: 11px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* BACK */
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #073b70;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px 0;
+        }
+
+        .back:hover {
+            color: #1597e5;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .header {
+                padding: 30px 15px;
+            }
+
+            .header-icon {
+                font-size: 32px;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .header p {
+                font-size: 13px;
+            }
+
+            .container {
+                width: 94%;
+                margin: 20px auto;
+            }
+
+            .card {
+                padding: 19px;
+                border-radius: 14px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            form {
+                grid-template-columns: 1fr;
+            }
+
+            input,
+            select,
+            button {
+                width: 100%;
+            }
+
+            .task {
+                padding: 14px;
+            }
+
+            .task-title {
+                font-size: 14px;
+                padding-right: 65px;
+            }
+
+            .status {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .delete {
+                top: 13px;
+                right: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+
+        <div class="header-icon">
+            📅
+        </div>
+
+        <h1>
+            My Tasks
+        </h1>
+
+        <p>
+            Organize your tasks and stay productive
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+        <!-- ADD TASK -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>
+                    ➕ Add New Task
+                </h2>
+
+            </div>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="What needs to be done?"
+                    required
+                >
+
+                <select name="priority">
+
+                    <option value="high">
+                        🔴 High
+                    </option>
+
+                    <option value="medium" selected>
+                        🟠 Medium
+                    </option>
+
+                    <option value="low">
+                        🟢 Low
+                    </option>
+
+                </select>
+
+                <button type="submit">
+                    Add Task
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- TASK LIST -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>
+                    📋 Your Tasks
+                </h2>
+
+                {% if tasks %}
+                    <span class="task-count">
+                        {{ tasks|length }} Task{{ tasks|length|pluralize }}
+                    </span>
+                {% endif %}
+
+            </div>
+
+
+            {% if tasks %}
+
+                {% for task in tasks %}
+
+                    <div class="task {{ task.priority }} {% if task.completed %}completed{% endif %}">
+
+                        <div class="task-main">
+
+                            <div class="task-icon">
+
+                                {% if task.completed %}
+                                    ✅
+                                {% else %}
+                                    📝
+                                {% endif %}
+
+                            </div>
+
+                            <div class="task-info">
+
+                                <div class="task-title">
+                                    {{ task.title }}
+                                </div>
+
+                                <div class="priority">
+                                    Priority: {{ task.get_priority_display }}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="status">
+
+                            {% if task.completed %}
+
+                                <span class="status-label">
+                                    ✅ Completed
+                                </span>
+
+                                <a
+                                    class="incomplete-link"
+                                    href="/toggle-task/{{ task.id }}/"
+                                >
+                                    ↩ Mark Incomplete
+                                </a>
+
+                            {% else %}
+
+                                <span class="status-label">
+                                    ⏳ Pending
+                                </span>
+
+                                <a
+                                    class="complete-link"
+                                    href="/toggle-task/{{ task.id }}/"
+                                >
+                                    ✅ Mark Complete
+                                </a>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <a
+                            class="delete"
+                            href="/delete-task/{{ task.id }}/"
+                        >
+                            🗑️ Delete
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p class="empty">
+                    📝 No tasks added yet.<br>
+                    Create your first task and start being productive! 🚀
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <a
+            class="back"
+            href="/dashboard/"
+        >
+            ⬅ Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+</html>
