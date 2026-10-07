@@ -12,6 +12,9 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
+
+load_dotenv()
+
 from .models import (
     Goal,
     StudyPlan,
@@ -19,9 +22,6 @@ from .models import (
     ChatConversation,
     ChatMessage
 )
-
-
-load_dotenv()
 
 
 # =========================================================
